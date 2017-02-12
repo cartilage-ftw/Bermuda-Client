@@ -9,8 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -46,6 +45,10 @@ public class Launcher extends Application {
 		pane.setVgap(4);
 		pane.setHgap(4);
 		pane.setPadding(new Insets(8, 8, 8, 8));
+		ColumnConstraints zerothColumn = new ColumnConstraints();
+		zerothColumn.setPrefWidth(50);
+		zerothColumn.setHgrow(Priority.SOMETIMES);
+		pane.getColumnConstraints().add(zerothColumn);
 
 		Image logo = new Image("https://dl.dropboxusercontent.com/u/65089966/logo.png");
 		ImageView imgView = new ImageView();
@@ -66,8 +69,7 @@ public class Launcher extends Application {
 		PasswordField passwordField = new PasswordField();
 		pane.add(passwordField, 1, 3);
 
-		//TODO: Fix the text fields and make the pane about 250x280
-		Scene scene = new Scene(pane, 300, 300);
+		Scene scene = new Scene(pane, 250, 280);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
