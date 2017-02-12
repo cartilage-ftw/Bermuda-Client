@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -12,14 +13,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * Launches the UI of the client
  * @author Cartilage
  */
 public class Launcher extends Application {
+
+	/**
+	 * A {@link Text} that appears at the bottom of the login screen and
+	 * informs the user of server responses
+	 */
+	public static Text info = new Text();
 
 	/**
 	 * The main entry point for all JavaFX applications.
@@ -69,13 +76,26 @@ public class Launcher extends Application {
 		PasswordField passwordField = new PasswordField();
 		pane.add(passwordField, 1, 3);
 
+		Button button = new Button("Sign in");
+		button.setAlignment(Pos.BOTTOM_RIGHT);
+		button.setOnAction(evt -> System.out.println("A sign in was attempted!"));
+		pane.add(button, 1, 4);
+
+		info.setText("Enter your username and password to login");
+		info.setWrappingWidth(230);
+		info.setTextAlignment(TextAlignment.CENTER);
+		pane.add(info, 0, 5);
+
 		Scene scene = new Scene(pane, 250, 280);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 
+	/**
+	 * The entry point of this client
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
-
 	}
 }
